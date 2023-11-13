@@ -1,0 +1,8 @@
+    - carte     ./
+    - equilibrage
+    - infini
+    - map aleatoire
+    - relique
+    - carte classe
+    - plus de classe
+    - save
