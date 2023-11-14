@@ -17,7 +17,7 @@ class Shop:
     
     def __repr__(self):
         for i in range(len(self.offer)):
-            self.offer[i].print(self.indexCards[i])
+            self.offer[i].print(str(self.indexCards[i]))
         return ""
 
     def Available(self):
@@ -44,7 +44,7 @@ class Shop:
                 print("Bad input")
                 choice = input()
             if choice != "q" and choice != "Q":
-                self.buy(self.offer[;  int(choice)-1],player)
+                self.buy(self.offer[self.indexCards.index(choice)],player)
                 self.indexCards.remove(choice)
         
     def buy(self,offer,player):
