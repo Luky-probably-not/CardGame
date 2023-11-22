@@ -35,5 +35,5 @@ def InitGame():
     C = Node(copy.deepcopy(squelette),E,None,2)
     B = Node(copy.deepcopy(squelette),C,D,1)
     A = Node(copy.deepcopy(zombie),B,None,0)
-    map = Map(H,I)
+    map = Map(A,I)
     return p1, map
