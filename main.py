@@ -9,8 +9,8 @@ from func.shop import *
 from func.map import *
 import random as rand
 import copy
-
 p1, map = InitGame()
+Smap = copy.deepcopy(map)
 if p1.rank == "mage":
     p1.mage()
 a = checkHp = True
@@ -28,6 +28,15 @@ while a:
         i.interact(p1)
     round(p1)
     a = map.choiceMap()
+    if not a:
+        a = True
+        map = Copy(Smap)
+        p1.hp += 5
+        if p1.hp > p1.hpmax:
+            p1.hp = p1.hpmax
+
+        
+        
 if checkHp == False:
     print("You lose")
 else:

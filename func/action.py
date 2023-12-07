@@ -90,10 +90,10 @@ def action(player, index, enemy):
         if player.hp > player.hpmax:
             player.hp = player.hpmax
     elif card.eff == "buff":
-        player.tstrengh += 1 
-        player.strengh += 1   
-        player.tresis += 1
-        player.resis += 1
+        if random.choice([True,False]):
+            player.strengh += 1   
+        else:
+            player.resis += 1
         player.m += 1
     if player.rank == "hunter":
         player.hunter(enemy)

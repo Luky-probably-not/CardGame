@@ -2,6 +2,7 @@ from func.encounter import *
 from func.enemies import *
 from func.shop import *
 import random as rand
+import copy
 import time
 
 class Node:
@@ -83,8 +84,21 @@ class Map:
             self.node = self.node.right
             return True
 
-
+def Copy(Smap):
+    map = copy.deepcopy(Smap)
+    map.node = buff(Smap.start)
+    return map
         
+def buff(node):
+    if node.left != None:
+        buff(node.left)
+    if node.right != None:
+        buff(node.right)
+    if type(node.info) == Enemy:
+        node.info.hpmax += 5
+        node.info.hp = node.info.hpmax
+        node.info.a += 2
+    return node
 """
 mobs = InitMobs()
 zombie = Encounter("Zombie",mobs[0]).init()
