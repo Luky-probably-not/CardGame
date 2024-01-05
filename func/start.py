@@ -8,14 +8,19 @@ def start():
     deck = InitCard()
     p1 = Player(3,30,deck)
     print("What class would you like to play ?")
-    print("     -hunter     : deal 2 damage every card played")
-    print("     -mage       : gain +1 mana max")
-    print("     -barbarian  : gain temporal strengh when you receive damage")
+    print("     -hunter     (h)  : deal 2 damage every card played")
+    print("     -mage       (m)  : gain +1 mana max")
+    print("     -barbarian  (b)  : gain temporal strengh when you receive damage")
     p1.rank = input()
-    while p1.rank != "hunter" and p1.rank != "mage" and p1.rank != "barbarian":
-        print('bad input, type "hunter", "mage" or "barbarian"')
+    while p1.rank != "h" and p1.rank != "m" and p1.rank != "b":
+        print("Bad input, try again")
         p1.rank = input()
-    
+    if p1.rank == "h":
+        p1.rank = "hunter"
+    elif p1.rank == "m":
+        p1.rank = "mage"
+    elif p1.rank == "b":
+        p1.rank = "barbarian"
     return p1, InitMobs()
 
 def InitGame():

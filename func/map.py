@@ -41,6 +41,17 @@ class Node:
         else :
             right = self.right
         return left,right
+    
+    def buff(self):
+        if self.left != None:
+            self.left.buff()
+        if self.right != None:
+            self.right.buff()
+        if type(self.info) == Enemy:
+            self.info.hpmax += 5
+            self.info.hp = self.info.hpmax
+            self.info.a += 2
+        return self
         
 class Map:
 
@@ -73,7 +84,7 @@ class Map:
         self.print()   
         print("Where would you like to go ?")
         choice = input()
-        if ((choice == "left" or choice == "LEFT") and self.node.left == None) or ((choice == "right" or choice == "RIGHT") and self.node.right == None):
+        while ((choice == "left" or choice == "LEFT") and self.node.left == None) or ((choice == "right" or choice == "RIGHT") and self.node.right == None) or (choice != "left" and choice != "LEFT" and choice != "right" and choice != "RIGHT"):
             print("Bad input")
             self.print()
             choice = input()
@@ -86,19 +97,10 @@ class Map:
 
 def Copy(Smap):
     map = copy.deepcopy(Smap)
-    map.node = buff(Smap.start)
+    map.node = Smap.start.buff()
     return map
         
-def buff(node):
-    if node.left != None:
-        buff(node.left)
-    if node.right != None:
-        buff(node.right)
-    if type(node.info) == Enemy:
-        node.info.hpmax += 5
-        node.info.hp = node.info.hpmax
-        node.info.a += 2
-    return node
+
 """
 mobs = InitMobs()
 zombie = Encounter("Zombie",mobs[0]).init()

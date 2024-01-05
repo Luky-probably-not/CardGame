@@ -14,6 +14,7 @@ Smap = copy.deepcopy(map)
 if p1.rank == "mage":
     p1.mage()
 a = checkHp = True
+level = 1
 
 while a:
     i = map.node.info
@@ -24,6 +25,7 @@ while a:
             break
         p1.gold += rand.randint(15,25)
     elif type(i) == Shop:
+        i = Encounter("Magasin",Shop()).init()
         time.sleep(1)
         i.interact(p1)
     round(p1)
@@ -31,9 +33,13 @@ while a:
     if not a:
         a = True
         map = Copy(Smap)
+        Smap = copy.deepcopy(map)
+        level += 1
         p1.hp += 5
         if p1.hp > p1.hpmax:
             p1.hp = p1.hpmax
+        print("Difficulty increased, now level : " + str(level))
+        time.sleep(2)
 
         
         

@@ -26,9 +26,15 @@ def mana_buff(p):
     print("│       " + mana, end="")
     for i in range(21):
         print(" ", end="")
-    print(strengh + "       │")
+    print(strengh,end="")
+    for i in range(8-len(str(p.strengh))):
+        print(" ",end="")
+    print("│")
     print("│", end="")
     for i in range(38):
         print(" ", end="")
-    print(resis + "         │")
+    print(resis, end="")
+    for i in range(10-len(str(p.resis))):
+        print(" ",end="")
+    print("│")
                                          

@@ -15,7 +15,7 @@ class Player:
         self.tresis = 0
         self.trash = []
         self.InitHand()
-        self.gold = 25
+        self.gold = 100
 
     def __repr__(self):
         print(self.hand[0])
